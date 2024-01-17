@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="end"
+    android:padding="16dp">
+
+    <!-- Add other UI elements for additional details as needed -->
+
+    <EditText
+        android:id="@+id/editTextCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Category Name"
+        android:minHeight="48dp"
+        android:padding="8dp"
+/>
+
+    <Button
+        android:id="@+id/buttonAddTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="42dp"
+        android:padding="11dp"
+        android:text="Add New Category"
+        android:layout_marginTop="8dp"/>
+
+
+</LinearLayout>

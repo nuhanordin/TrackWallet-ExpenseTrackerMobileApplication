@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TrackWalletApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/themeColor</item>
+    </style>
+
+    <style name="Theme.TrackWalletApp" parent="Base.Theme.TrackWalletApp" />
+</resources>

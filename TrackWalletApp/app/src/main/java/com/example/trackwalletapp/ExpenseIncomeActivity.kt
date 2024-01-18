@@ -72,15 +72,12 @@ class ExpenseIncomeActivity : AppCompatActivity() {
             }
         }
 
-
         val buttonShowList = binding.buttonShowList
-
         buttonShowList.setOnClickListener {
             // Add any data you want to pass to ListActivity using Intent extras
             val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }
-
 
         binding.gridView.setOnItemClickListener { _, _, position, _ ->
             val category = adapter.getItem(position)
@@ -101,10 +98,6 @@ class ExpenseIncomeActivity : AppCompatActivity() {
                 showAddTransactionDialog(category, transactionType, userId)
             }
         }
-
-
-
-
 
         val bottomNavigationView = binding.bottomNavigation
         bottomNavigationView.setSelectedItemId(R.id.add)
@@ -154,7 +147,6 @@ class ExpenseIncomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
     }
 
 
@@ -222,7 +214,6 @@ class ExpenseIncomeActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
         }
-
         dialog.show()
     }
 
@@ -244,7 +235,7 @@ class ExpenseIncomeActivity : AppCompatActivity() {
         buttonOpenDatePicker.setOnClickListener {
             showDatePickerDialog(dialogBinding.editTextDate)
         }
-        
+
         buttonAddTransaction.setOnClickListener {
             val priceString = editTextPrice.text.toString().trim()
             val reference = editTextReference.text.toString().trim()
@@ -290,12 +281,12 @@ class ExpenseIncomeActivity : AppCompatActivity() {
                     newTransactionReference.setValue(transactionMap)
 
                     // Open ListActivity with category and transaction details
-                   /* val intent = Intent(this, ListActivity::class.java)
-                    intent.putExtra("category", category)
-                    startActivity(intent)
-                    dialog.dismiss()*/
-                    val intent = Intent(this, ListActivity::class.java)
-                    startActivity(intent)
+                     val intent = Intent(this, ListActivity::class.java)
+                     intent.putExtra("category", category)
+                     startActivity(intent)
+                     dialog.dismiss()
+                   // val intent = Intent(this, ListActivity::class.java)
+                   // startActivity(intent)
                 } catch (e: NumberFormatException) {
                     // Handle the case where the entered price is not a valid double
                     Log.e("ExpenseIncomeActivity", "Invalid price format: $priceString")
@@ -303,10 +294,8 @@ class ExpenseIncomeActivity : AppCompatActivity() {
                 }
             }
         }
-
         dialog.show()
     }
-
 
     private fun showDatePickerDialog(editTextDate: EditText) {
         val currentDate = Calendar.getInstance()
@@ -326,10 +315,6 @@ class ExpenseIncomeActivity : AppCompatActivity() {
             month,
             day
         )
-
         datePickerDialog.show()
     }
-
-
-
 }

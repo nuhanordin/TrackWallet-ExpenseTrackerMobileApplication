@@ -31,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
         val userId = sharedPreferences.getString("userId", "")
         binding.user.text = "Hi, $userId!"
 
-
         // Initialize RecyclerView
         categoryExpenseAdapter = CategoryExpenseAdapter()
         binding.expensesRecyclerView.adapter = categoryExpenseAdapter
@@ -79,7 +78,6 @@ class HomeActivity : AppCompatActivity() {
                     val options = ActivityOptions.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left)
                     startActivity(Intent(applicationContext, SettingActivity::class.java), options.toBundle())
                     finish()
-
                     true
                 }
                 else -> false

@@ -5,11 +5,6 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.trackwalletapp.databinding.ActivityStatisticBinding
 import com.google.firebase.database.DataSnapshot
@@ -25,7 +20,8 @@ class StatisticActivity : AppCompatActivity() {
         binding = ActivityStatisticBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val database = FirebaseDatabase.getInstance("https://trackwalletapp-b9268-default-rtdb.asia-southeast1.firebasedatabase.app")
+        val database =
+            FirebaseDatabase.getInstance("https://trackwalletapp-b9268-default-rtdb.asia-southeast1.firebasedatabase.app")
         val sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE)
         val userId = sharedPreferences.getString("userId", "")
 
@@ -44,24 +40,38 @@ class StatisticActivity : AppCompatActivity() {
 
                         for (categorySnapshot in expenseSnapshot.children) {
                             for (expense in categorySnapshot.children) {
-                                val expenseAmount = expense.child("price").getValue(Double::class.java) ?: 0.0
+                                val expenseAmount =
+                                    expense.child("price").getValue(Double::class.java) ?: 0.0
                                 totalExpenseAmount += expenseAmount
                             }
                         }
 
                         for (categorySnapshot in incomeSnapshot.children) {
                             for (income in categorySnapshot.children) {
-                                val incomeAmount = income.child("price").getValue(Double::class.java) ?: 0.0
+                                val incomeAmount =
+                                    income.child("price").getValue(Double::class.java) ?: 0.0
                                 totalIncomeAmount += incomeAmount
                             }
                         }
 
-                        progressBarCombined.progress = totalExpenseAmount.toInt()
-                        progressBarCombined.max = totalIncomeAmount.toInt()
+                        // Calculate progress percentage
+                        val progress = ((totalExpenseAmount / totalIncomeAmount) * 100).toInt()
 
-                        binding.textExpense.text = "Expenses: RM $totalExpenseAmount"
-                        binding.textIncome.text = "Incomes: RM $totalIncomeAmount"
+                        // Set progress and max values
+                        progressBarCombined.progress = progress
+                        val balance = totalIncomeAmount - totalExpenseAmount
 
+                        binding.textExpenses.text = "Expenses: RM ${String.format("%.2f", totalExpenseAmount)}"
+                        binding.textIncome.text = "Incomes: RM ${String.format("%.2f", totalIncomeAmount)}"
+                        binding.textBalance.text = "Balance: RM ${String.format("%.2f", balance)}"
+
+                        Log.d("StatisticActivity", "Total Expense Amount: $totalExpenseAmount")
+                        Log.d("StatisticActivity", "Total Income Amount: $totalIncomeAmount")
+                        Log.d("StatisticActivity", "Balance: $balance")
+
+                        binding.textExpenses.text = "Expenses: RM ${String.format("%.2f", totalExpenseAmount)}"
+                        binding.textIncome.text = "Incomes: RM ${String.format("%.2f", totalIncomeAmount)}"
+                        binding.textBalance.text = "Balance: RM ${String.format("%.2f", balance)}"
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -73,10 +83,7 @@ class StatisticActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 Log.e("ExpenseActivity", "Error getting expense data", error.toException())
             }
-        }
-        )
-
-
+        })
 
 
         val bottomNavigationView = binding.bottomNavigation
@@ -86,11 +93,11 @@ class StatisticActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> {
                     val options = ActivityOptions.makeCustomAnimation(
-                        this,
-                        R.anim.slide_in_right,
-                        R.anim.slide_out_left
+                        this, R.anim.slide_in_right, R.anim.slide_out_left
                     )
-                    startActivity(Intent(applicationContext, HomeActivity::class.java), options.toBundle())
+                    startActivity(
+                        Intent(applicationContext, HomeActivity::class.java), options.toBundle()
+                    )
                     finish()
                     true
                 }
@@ -99,13 +106,15 @@ class StatisticActivity : AppCompatActivity() {
                     val options = ActivityOptions.makeCustomAnimation(
                         this, R.anim.slide_in_right, R.anim.slide_out_left
                     )
-                    startActivity(Intent(applicationContext, ExpenseIncomeActivity::class.java), options.toBundle())
+                    startActivity(
+                        Intent(applicationContext, ExpenseIncomeActivity::class.java),
+                        options.toBundle()
+                    )
                     finish()
                     true
                 }
 
                 R.id.statistics -> {
-                    // No need to recreate the same activity
                     true
                 }
 
@@ -113,15 +122,14 @@ class StatisticActivity : AppCompatActivity() {
                     val options = ActivityOptions.makeCustomAnimation(
                         this, R.anim.slide_in_right, R.anim.slide_out_left
                     )
-                    startActivity(Intent(applicationContext, SettingActivity::class.java), options.toBundle())
+                    startActivity(
+                        Intent(applicationContext, SettingActivity::class.java), options.toBundle()
+                    )
                     finish()
                     true
                 }
-
                 else -> false
             }
         }
     }
-
-
 }

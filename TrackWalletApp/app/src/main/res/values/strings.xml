@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TrackWalletApp</string>
+    <string name="title_activity_expense_income"> ExpenseIncomeActivity </string>
 </resources>

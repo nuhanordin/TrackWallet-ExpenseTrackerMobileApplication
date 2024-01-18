@@ -6,16 +6,13 @@
     android:gravity="end"
     android:padding="16dp">
 
-    <!-- Add other UI elements for additional details as needed -->
-
     <EditText
         android:id="@+id/editTextCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Category Name"
         android:minHeight="48dp"
-        android:padding="8dp"
-/>
+        android:padding="8dp" />
 
     <Button
         android:id="@+id/buttonAddTransaction"
@@ -25,6 +22,4 @@
         android:padding="11dp"
         android:text="Add New Category"
         android:layout_marginTop="8dp"/>
-
-
 </LinearLayout>

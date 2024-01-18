@@ -151,12 +151,8 @@ class ListActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-
                 else -> false
             }
         }
-
     }
-
-
 }

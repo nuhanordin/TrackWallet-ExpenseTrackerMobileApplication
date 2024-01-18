@@ -72,9 +72,6 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/person_2_24" />
 
-            <!-- Person Name -->
-
-            <!-- CardView with radius for Switch and Button -->
             <TextView
                 android:id="@+id/personName"
                 android:layout_width="wrap_content"

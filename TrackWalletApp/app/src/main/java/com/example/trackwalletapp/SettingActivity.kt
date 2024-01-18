@@ -23,7 +23,6 @@ class SettingActivity : AppCompatActivity() {
     private lateinit var rootView: View
     private var isDarkMode: Boolean = true
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,7 +30,6 @@ class SettingActivity : AppCompatActivity() {
         setContentView(binding.root)
         val userId = getUserIdFromSharedPreferences()
         fetchUserData(userId)
-
 
         darkModeSwitch = findViewById(R.id.darkModeSwitch)
         rootView = findViewById(android.R.id.content)
@@ -43,7 +41,6 @@ class SettingActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-
                     val options = ActivityOptions.makeCustomAnimation(
                         this,
                         R.anim.slide_in_right,
@@ -54,9 +51,7 @@ class SettingActivity : AppCompatActivity() {
                         options.toBundle()
                     )
                     finish()
-
                     true
-
                 }
 
                 R.id.add -> {
@@ -70,7 +65,6 @@ class SettingActivity : AppCompatActivity() {
                         options.toBundle()
                     )
                     finish()
-
                     true
                 }
 
@@ -85,15 +79,11 @@ class SettingActivity : AppCompatActivity() {
                         options.toBundle()
                     )
                     finish()
-
                     true
                 }
                 R.id.profile -> {
-
-
                     true
                 }
-
                 else -> false
             }
         }
@@ -157,7 +147,6 @@ class SettingActivity : AppCompatActivity() {
         // Set logout button click listener
         binding.logoutButton.setOnClickListener {
             clearUsernameFromSharedPreferences()
-
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
@@ -177,12 +166,10 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun enableDarkMode() {
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         isDarkMode = true    }
 
     private fun disableDarkMode() {
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         isDarkMode = false    }
 

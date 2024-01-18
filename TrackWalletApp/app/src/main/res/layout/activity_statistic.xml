@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StatisticActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -35,9 +36,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.cardview.widget.CardView
@@ -52,12 +51,12 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.652">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ProgressBar
@@ -70,20 +69,51 @@
             android:layout_marginEnd="16dp" />
 
         <TextView
-            android:id="@+id/textExpense"
-            android:layout_width="wrap_content"
+            android:id="@+id/textIncome"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="220dp"
+            android:layout_marginStart="230dp"
             android:layout_marginTop="100dp"
-            android:text="Expenses: RM" />
+            android:text="Income: \n RM"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textIncome"
-            android:layout_width="wrap_content"
+            android:id="@+id/textExpenses"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="100dp"
-            android:text="Incomes: RM" />
+            android:text="Expenses: \n RM"
+            android:textStyle="bold" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/balanceCardView"
+            android:layout_width="200dp"
+            android:layout_height="105dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="225dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="#FFB6C1"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balanceLabel">
+
+            <TextView
+                android:id="@+id/textBalance"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="35dp"
+                android:text="Balance: \n  RM"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.cardview.widget.CardView>
+
 
     </androidx.cardview.widget.CardView>
 
@@ -107,6 +137,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"/>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

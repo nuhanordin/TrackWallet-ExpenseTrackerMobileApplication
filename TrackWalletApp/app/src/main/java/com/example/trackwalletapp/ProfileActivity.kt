@@ -14,7 +14,6 @@ import com.google.firebase.database.ValueEventListener
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
-
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
@@ -27,8 +26,6 @@ class ProfileActivity : AppCompatActivity() {
         // Initialize Firebase Database
         database = FirebaseDatabase.getInstance("https://trackwalletapp-b9268-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database.getReference("users")
-
-        setupBottomNavigation()
 
         // Get the username from the intent
         val username = intent.getStringExtra("username")
@@ -53,9 +50,5 @@ class ProfileActivity : AppCompatActivity() {
                 // Handle errors if any
             }
         })
-    }
-
-    private fun setupBottomNavigation() {
-        // Your bottom navigation setup code here
     }
 }
